@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hscode-api
+  labels:
+    app: hscode-api
+spec:
+  selector:
+    matchLabels:
+      app: hscode-api
+  template:
+    metadata:
+      labels:
+        app: hscode-api
+    spec:
+      containers:
+      - name: hscode-api
+        image: hscode-api
+        ports:
+        - containerPort: 7001
+        env:
+          - name: ACTIVE_PROFILE
+            value: "local"

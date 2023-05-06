@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-api
+  labels:
+    app: product-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-api
+  template:
+    metadata:
+      labels:
+        app: product-api
+    spec:
+      containers:
+        - name: product-api
+          image: product-api
+          ports:
+            - containerPort: 8015
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "local"
+            - name: ssl-enabled
+              value: "false"
+            - name: pim.stretch-kafka.ssl-truststore-location
+              value: /app/resources/globaltrust.jks

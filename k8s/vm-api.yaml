@@ -1,0 +1,25 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: visual-mapping-api
+#   labels:
+#     app: visual-mapping-api
+# spec:
+#   selector:
+#     matchLabels:
+#       app: visual-mapping-api
+#   template:
+#     metadata:
+#       labels:
+#         app: visual-mapping-api
+#     spec:
+#       containers:
+#       - name: visual-mapping-api
+#         image: visual-mapping-api
+#         ports:
+#         - containerPort: 8021
+#         env:
+#           - name: SPRING_PROFILES_ACTIVE
+#             value: "local"
+#           - name: stretched-kafka.ssl-enabled
+#             value: "false"
