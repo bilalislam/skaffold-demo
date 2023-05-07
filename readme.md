@@ -19,6 +19,7 @@ $ once docker deskop'un kapasitesini cpu : 5 memory : 12.5 gb swap 2gb olarak s
 $ brew install skaffold@1.39
 $ minikube start --memory 12000 --cpus 4  -p dev
 $ skaffold dev --skip-tests
+$ minikube delete -p dev
 ```
 
 ## notes
