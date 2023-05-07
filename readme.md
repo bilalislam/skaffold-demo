@@ -8,10 +8,15 @@
 6. git clone all service via sh
 7. update old version of jib as 3.2.0 (product-api,label-api)
 7.1. vm api gradle ve onun jib version'ı 3.2.1 eger maven da destekliyorsa prodda sorun olmaz sanırım.
-8. alan yetersiz ise gloud kullanılabilir.
+8. alan yetersiz ise gcloud kullanılabilir.
+9. branch base env passsing yapmamız lazım lazım
+10. portları fix edip default referans olarak pass edilmeli
+11. http url'leri env olarak gecilemiyor spring boot dısında o yuzden aktif olmayanlar için config json olusturmak lazım
+12. build uzun sürüyor hepsi için hızlandırmak lazım
 
 ```sh
 $ once docker deskop'un kapasitesini cpu : 5 memory : 12.5 gb swap 2gb olarak set
+$ brew install skaffold@1.39
 $ minikube start --memory 12000 --cpus 4  -p dev
 $ skaffold dev --skip-tests
 ```

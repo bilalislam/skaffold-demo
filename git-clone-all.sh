@@ -1,5 +1,5 @@
 #!/bin/bash
-REPOSITORIES=(product-api hscode-api visual-mapping-api label-api)
+REPOSITORIES=(product-api hscode-api visual-mapping-api label-api pim-bff)
 if [ "$1" = "-p" ]
   then
     echo ${REPOSITORIES[@]} | sed -E -e 's/[[:blank:]]+/\n/g' | xargs -I {} -n 1 -P 0 sh -c 'printf "========================================================\nCloning repository: {}\n========================================================\n";'
