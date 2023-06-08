@@ -3,11 +3,8 @@
 1. cb -  ok  
 
 ## cb missing configuration - nok
-todo : 
-
-    * https://gitlab.trendyol.com/test/infra/images/gatek/couchbase-automation/-/blob/master/setup.sh gibi predefined bucket ve indexing yapmak lazım default olarak. Yoksa get calısmıyor. CB default index istiyor bucket için
-
-    * https://www.couchbase.com/forums/t/setting-up-a-cluster-and-a-bucket-programmatically-through-docker/32130
+todo :  predefined bucket ve indexing yapmak lazım default olarak. Yoksa get calısmıyor. CB default index istiyor bucket için
+https://www.couchbase.com/forums/t/setting-up-a-cluster-and-a-bucket-programmatically-through-docker/32130
 
 
 2. sql,redis,elk
