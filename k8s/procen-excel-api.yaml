@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: procen-excel-api
+  labels:
+    app: procen-excel-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: procen-excel-api
+  template:
+    metadata:
+      labels:
+        app: procen-excel-api
+    spec:
+      containers:
+        - name: procen-excel-api
+          image: procen-excel-api
+          ports:
+            - containerPort: 8086
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "local"
+            - name: procen.kafka.ssl-enabled
+              value: "false"

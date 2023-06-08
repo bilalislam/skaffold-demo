@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-content-editor-api
+  labels:
+    app: product-content-editor-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-content-editor-api
+  template:
+    metadata:
+      labels:
+        app: product-content-editor-api
+    spec:
+      containers:
+        - name: product-content-editor-api
+          image: product-content-editor-api
+          ports:
+            - containerPort: 8099
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "local"
+            - name: kafka.ssl-enabled
+              value: "false"

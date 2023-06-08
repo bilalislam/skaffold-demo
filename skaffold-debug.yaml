@@ -1,0 +1,18 @@
+apiVersion: skaffold/v4beta5
+kind: Config
+deploy:
+  statusCheckDeadlineSeconds: 300
+metadata:
+  name: procen
+build:
+  artifacts:
+  - image: procen-excel-api
+    context: src/procen-excel-api
+    jib: {}
+  # - image: test-api
+  #   context: src/java-springboot-quickstart
+  #   docker:
+  #     dockerfile: .gitpod.Dockerfile
+manifests:
+  rawYaml:
+    - kubernetes/*

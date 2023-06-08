@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pim-read-projector
+  labels:
+    app: pim-read-projector
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pim-read-projector
+  template:
+    metadata:
+      labels:
+        app: pim-read-projector
+    spec:
+      containers:
+        - name: pim-read-projector
+          image: pim-read-projector
+          ports:
+            - containerPort: 53914
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Staging"

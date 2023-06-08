@@ -1,0 +1,21 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: pim-web
+#   labels:
+#     app: pim-web
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: pim-web
+#   template:
+#     metadata:
+#       labels:
+#         app: pim-web
+#     spec:
+#       containers:
+#         - name: pim-web
+#           image: pim-web
+#           ports:
+#             - containerPort: 8080

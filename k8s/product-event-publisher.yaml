@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-event-publisher
+  labels:
+    app: product-event-publisher
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-event-publisher
+  template:
+    metadata:
+      labels:
+        app: product-event-publisher
+    spec:
+      containers:
+        - name: product-event-publisher
+          image: product-event-publisher
+          ports:
+            - containerPort: 8081
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "stage"

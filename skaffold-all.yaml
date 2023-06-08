@@ -1,0 +1,75 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+deploy:
+  statusCheckDeadlineSeconds: 300
+metadata:
+  name: procen
+build:
+  artifacts:
+  - image: auth-service
+    context: src/auth-service
+    jib : {}
+  - image: image-generator
+    context: src/image-generator
+    jib : {}
+  - image: label-event-publisher
+    context: src/label-event-publisher
+    jib : {}
+  - image: pim-notification-service
+    context: src/pim-notification-service
+    jib : {}
+  - image: pim-read-api
+    context: src/pim-read-api
+    jib : {}
+  - image: procen-excel-api
+    context: src/procen-excel-api
+    jib : {}
+  - image: product-content-editor-api
+    context: src/product-content-editor-api
+    jib : {}
+  - image: product-event-publisher
+    context: src/product-event-publisher
+    jib : {}
+  - image: product-excel-api
+    context: src/product-excel-api
+    jib : {}
+  - image: product-excel-api-consumer
+    context: src/product-excel-api-consumer
+    jib : {}
+  - image: label-api
+    context: src/label-api
+    jib : {}
+  - image: product-api
+    context: src/product-api
+    jib : {}
+  - image: visual-mapping-api
+    context: src/visual-mapping-api
+    jib : {}
+  - image: hscode-api
+    context: src/hscode-api
+    docker:
+      dockerfile: Dockerfile
+  - image: pim-read-projector
+    platforms: ["linux/arm64"]
+    context: src/pim-read-projector
+    docker:
+      dockerfile: Dockerfile
+      buildArgs:
+        CI_TOKEN_TYPE: kadir.unal 
+        CI_JOB_TOKEN: EVH9rYin2cW-HtLJNUUv
+  - image: pim-storage-service
+    context: src/pim-storage-service
+    docker:
+      dockerfile: Dockerfile
+  - image: pim-web
+    context: src/pim-web
+    docker:
+      dockerfile: Dockerfile
+    sync:
+      manual:
+        - src: './dist/main.js'
+          dest: .  
+  - image: pim-bff
+    context: src/pim-bff
+    docker:
+      dockerfile: Dockerfile

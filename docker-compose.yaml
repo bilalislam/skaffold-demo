@@ -1,0 +1,25 @@
+version: '3'
+services:
+
+  couchbase-server:
+    image: couchbase/server:enterprise
+    deploy:
+      replicas: 1
+    environment:  
+      - CLUSTER_NAME=couchbase-demo
+      - COUCHBASE_ADMINISTRATOR_USERNAME=Administrator
+      - COUCHBASE_ADMINISTRATOR_PASSWORD=P@$$w0rd12
+      - COUCHBASE_BUCKET=projects
+      - COUCHBASE_BUCKET_RAMSIZE=512
+      - COUCHBASE_RBAC_USERNAME=pimuser
+      - COUCHBASE_RBAC_PASSWORD=piM@2020!
+      - COUCHBASE_RBAC_NAME=admin
+      - COUCHBASE_RAM_SIZE=2048
+      - COUCHBASE_INDEX_RAM_SIZE=512
+    ports:
+      - 8091-8097:8091-8097
+      - 11210:11210
+      - 11207:11207
+      - 18091-18095:18091-18095
+      - 18096:18096
+      - 18097:18097

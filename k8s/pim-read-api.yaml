@@ -1,0 +1,24 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: pim-read-api
+#   labels:
+#     app: pim-read-api
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: pim-read-api
+#   template:
+#     metadata:
+#       labels:
+#         app: pim-read-api
+#     spec:
+#       containers:
+#         - name: pim-read-api
+#           image: pim-read-api
+#           ports:
+#             - containerPort: 8020
+#           env:
+#             - name: SPRING_PROFILES_ACTIVE
+#               value: "local"

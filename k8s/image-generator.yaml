@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-generator
+  labels:
+    app: image-generator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: image-generator
+  template:
+    metadata:
+      labels:
+        app: image-generator
+    spec:
+      containers:
+        - name: image-generator
+          image: image-generator
+          ports:
+            - containerPort: 8099
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "local"

@@ -1,0 +1,32 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: test-api
+#   labels:
+#     app: test-api
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: test-api
+#   template:
+#     metadata:
+#       labels:
+#         app: test-api
+#     spec:
+#       containers:
+#         - name: test-api
+#           image: test-api
+#           ports:
+#             - containerPort: 8080
+#           env:
+#             - name: spring.couchbase.bootstrap-hosts
+#               value: couchbase-service
+#             - name: spring.couchbase.bucket.name
+#               value: user_profile_spring
+#             - name:  spring.couchbase.bucket.user
+#               value: Administrator
+#             - name : spring.couchbase.bucket.password
+#               value: password
+#             - name : spring.mvc.pathmatch.matching-strategy
+#               value: ant_path_matcher

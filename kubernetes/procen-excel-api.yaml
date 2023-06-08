@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: procen-excel-api
+  labels:
+    app: procen-excel-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: procen-excel-api
+  template:
+    metadata:
+      labels:
+        app: procen-excel-api
+    spec:
+      containers:
+        - name: procen-excel-api
+          image: procen-excel-api
+          ports:
+            - containerPort: 8086
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "local"
+            - name: procen.kafka.ssl-enabled
+              value: "false"
+            - name: procen.kafka.servers
+              value: kafka-0.kafka-svc.default.svc.cluster.local:9092
+            - name: couchbase.urls
+              value: couchbase-service
+            - name: couchbase.username
+              value: Administrator
+            - name:  couchbase.password
+              value: password
+            - name : couchbase.bucketName
+              value: ProductUploadExcel

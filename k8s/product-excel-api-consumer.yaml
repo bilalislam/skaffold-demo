@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-excel-api-consumer
+  labels:
+    app: product-excel-api-consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-excel-api-consumer
+  template:
+    metadata:
+      labels:
+        app: product-excel-api-consumer
+    spec:
+      containers:
+        - name: product-excel-api-consumer
+          image: product-excel-api-consumer
+          ports:
+            - containerPort: 8016
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "local"

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pim-notification-service
+  labels:
+    app: pim-notification-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pim-notification-service
+  template:
+    metadata:
+      labels:
+        app: pim-notification-service
+    spec:
+      containers:
+        - name: pim-notification-service
+          image: pim-notification-service
+          ports:
+            - containerPort: 8087
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "stage"
