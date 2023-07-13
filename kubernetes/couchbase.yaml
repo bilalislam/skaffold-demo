@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
-metadata: 
+metadata:
   name: couchbase-service
-spec: 
-  selector: 
+spec:
+  selector:
     app: couchbase-rc-pod
   ports:
     - name: admin
@@ -27,6 +27,8 @@ spec:
         app: couchbase-rc-pod
     spec:
       containers:
+      - name: sidecar-container
+        image: ninjafx/cb:latest
       - name: couchbase
         image: couchbase/server:enterprise
         ports:
@@ -55,132 +57,3 @@ spec:
           value: password
         - name: COUCHBASE_RBAC_USERNAME
           value: Administrator
-
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: cb-svc
-#   labels:
-#     app: cb-app
-# spec:
-#   clusterIP: None
-#   ports:
-#     - name: "8091"
-#       port: 8091
-#       targetPort: 8091
-#     - name: "8092"
-#       port: 8092
-#       targetPort: 8092
-#     - name: "8093"
-#       port: 8093
-#       targetPort: 8093
-#     - name: "8094"
-#       port: 8094
-#       targetPort: 8094
-#     - name: "8095"
-#       port: 8095
-#       targetPort: 8095
-#     - name: "8096"
-#       port: 8096
-#       targetPort: 8096
-#     - name: "8097"
-#       port: 8097
-#       targetPort: 8097
-#     - name: "11210"
-#       port: 11210
-#       targetPort: 11210
-#     - name: "11207"
-#       port: 11207
-#       targetPort: 11207
-#     - name: "18091"
-#       port: 18091
-#       targetPort: 18091
-#     - name: "18092"
-#       port: 18092
-#       targetPort: 18092
-#     - name: "18093"
-#       port: 18093
-#       targetPort: 18093
-#     - name: "18094"
-#       port: 18094
-#       targetPort: 18094
-#     - name: "18095"
-#       port: 18095
-#       targetPort: 18095
-#     - name: "18096"
-#       port: 18096
-#       targetPort: 18096
-#     - name: "18097"
-#       port: 18097
-#       targetPort: 18097
-#   selector:
-#     app: cb-app
-
-# ---
-# apiVersion: apps/v1
-# kind: StatefulSet
-# metadata:
-#   name: cb
-#   labels:
-#     app: cb-app
-# spec:
-#   serviceName: cb-svc
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: cb-app
-#   template:
-#     metadata:
-#       labels:
-#         app: cb-app
-#     spec:
-#       containers:
-#         - name: couchbase-server
-#           image: couchbase/server:enterprise
-#           ports:
-#             - containerPort: 8091
-#             - containerPort: 8092
-#             - containerPort: 8093
-#             - containerPort: 8094
-#             - containerPort: 8095
-#             - containerPort: 8096
-#             - containerPort: 8097
-#             - containerPort: 11210
-#             - containerPort: 11207
-#             - containerPort: 18091
-#             - containerPort: 18092
-#             - containerPort: 18093
-#             - containerPort: 18094
-#             - containerPort: 18095
-#             - containerPort: 18096
-#             - containerPort: 18097
-#           env:
-#             - name: CLUSTER_NAME
-#               value: couchbase-demo
-#             - name: COUCHBASE_ADMINISTRATOR_PASSWORD
-#               value: password
-#             - name: COUCHBASE_ADMINISTRATOR_USERNAME
-#               value: Administrator
-#             - name: COUCHBASE_BUCKET
-#               value: projects
-#             - name: COUCHBASE_BUCKET_RAMSIZE
-#               value: "512"
-#             - name: COUCHBASE_INDEX_RAM_SIZE
-#               value: "512"
-#             - name: COUCHBASE_RAM_SIZE
-#               value: "2048"
-#             - name: COUCHBASE_RBAC_NAME
-#               value: admin
-#             - name: COUCHBASE_RBAC_PASSWORD
-#               value: password
-#             - name: COUCHBASE_RBAC_USERNAME
-#               value: Administrator
-#   volumeClaimTemplates:
-#     - metadata:
-#         name: data
-#       spec:
-#         accessModes:
-#           - "ReadWriteOnce"
-#         resources:
-#           requests:
-#             storage: "1Gi"
