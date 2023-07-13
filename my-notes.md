@@ -1,13 +1,14 @@
 ## todo 
 
-1. cb -  ok  
-
-## cb missing configuration - nok
-todo :  predefined bucket ve indexing yapmak lazım default olarak. Yoksa get calısmıyor. CB default index istiyor bucket için
-https://www.couchbase.com/forums/t/setting-up-a-cluster-and-a-bucket-programmatically-through-docker/32130
-
-
+1. cb -  ok ama 
+    * get query de endpoint not avaible veriyor
+    * sidecar restart atıyor
+    * sidecar injection olmadıgı için configmap ile custom image create ettim. minikube üzerinden local docker'a baglanırsa da docker hub'a push etmeye gerek kalmaz.
+    * en son download edildmedi - incele !!!
 2. sql,redis,elk
+    * redis - ok
+    * mssql
+    * elasticsearch
 3. kafka - ok 
 4. loadbalancer
 5. --skip-tests
