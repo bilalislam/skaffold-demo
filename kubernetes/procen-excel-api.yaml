@@ -34,3 +34,11 @@ spec:
               value: password
             - name : couchbase.bucketName
               value: ProductUploadExcel
+            - name: redis.hosts
+              value: redis-ha-cluster-sentinel-service.default.svc.cluster.local
+            - name: redis.password
+              value: rpasswd
+            - name: redis.port
+              value: "26379"
+            - name: redis.sentinelMasterId
+              value: mymaster
